@@ -1,6 +1,19 @@
 ﻿# Web Data Bridge & Companion API
 > Arquitetura modular e escalável conectando extensões web (Manifest V3) a uma API local em Python para automação e exportação de dados.
 
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-REST%20API-lightgrey.svg)
+![Extension](https://img.shields.io/badge/Chrome-Manifest%20V3-blue.svg)
+
+---
+
+### ⏱️ Impacto de Negócio & Horas Economizadas (Pé no chão)
+- **Fluxo Web-to-Desktop sem Atrito:** Elimina o ciclo manual de *"exportar CSV do navegador -> abrir pasta Downloads -> abrir Excel -> copiar e colar dados -> formatar"*.
+- **Economia Operacional Real:** Economia estimada de **~30 a 45 minutos diários** em tarefas repetitivas de extração administrativa.
+- **Escalabilidade:** Permite que qualquer página web envie dados estruturados diretamente para relatórios locais em 1 clique.
+
+---
+
 ## 📌 Visão Geral
 Este projeto demonstra o padrão arquitetural **Browser Extension + Local Bridge Server**:
 - A extensão web interage com páginas dinâmicas, extrai dados estruturados sob demanda e os despacha via HTTP assíncrono.
@@ -29,21 +42,7 @@ pip install flask flask-cors pandas openpyxl
 python server.py
 ```
 
-O servidor iniciará em `http://127.0.0.1:5000`.
-
 ### 2. Carregar a Extensão
 1. Abra o Google Chrome e acesse `chrome://extensions/`.
-2. Ative o **Modo do desenvolvedor** no canto superior direito.
+2. Ative o **Modo do desenvolvedor**.
 3. Clique em **Carregar sem compactação** e selecione a pasta `extension/`.
-
-### 3. Teste Rápido via Terminal
-```bash
-curl -X POST http://127.0.0.1:5000/api/v1/export \
-  -H "Content-Type: application/json" \
-  -d "{\"collection\":\"exemplo_teste\",\"records\":[{\"item\":\"A1\",\"status\":\"OK\"}]}"
-```
-
-## 🛡️ Segurança e Governança
-- O servidor roda vinculado a `127.0.0.1` (loopback local).
-- Não há armazenamento de credenciais ou dados corporativos confidenciais neste repositório.
-- Licença: MIT
